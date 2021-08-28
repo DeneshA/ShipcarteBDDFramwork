@@ -1,0 +1,7 @@
+io\pragra\shipcarte\bdd\corefunctions\runnersclass\ParallelRunner.class
+io\pragra\shipcarte\bdd\corefunctions\runnersclass\RunnerTest.class
+io\pragra\shipcarte\bdd\corefunctions\stepdefinition\OrangeHRMLoginStepDefinition.class
+io\pragra\shipcarte\bdd\corefunctions\config\FrameworkPropertyConfig.class
+io\pragra\shipcarte\bdd\corefunctions\pages\OrangeHRMLogin.class
+io\pragra\shipcarte\bdd\corefunctions\drivermanager\Browsers.class
+io\pragra\shipcarte\bdd\corefunctions\drivermanager\DriverManager.class

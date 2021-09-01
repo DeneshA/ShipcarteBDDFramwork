@@ -12,6 +12,7 @@ public class OrangeHRMLogin {
     @FindBy(id="txtUsername")WebElement userName;
     @FindBy(id="txtPassword")WebElement password;
     @FindBy(id="btnLogin")WebElement loginButton;
+    @FindBy(id="spanMessage")WebElement spanMessage;
     @FindBy(xpath = "//a[text()='Forgot your password?']") WebElement forgotPassword;
 
     public OrangeHRMLogin(WebDriver driver){
@@ -33,6 +34,10 @@ public class OrangeHRMLogin {
 
     public void Click_Forgot_your_password(){
         this.forgotPassword.click();
+    }
+
+    public String isInvalidCredentials(){
+        return spanMessage.getText();
     }
 
 }

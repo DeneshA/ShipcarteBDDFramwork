@@ -1,16 +1,17 @@
-package io.pragra.shipcarte.bdd.corefunctions.stepdefinition;
+package io.pragra.shipcarte.bdd.testfunctions.stepdefinition;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 //import io.pragra.shipcarte.bdd.corefunctions.pages.OrangeHRMLogin;
 import  io.pragra.shipcarte.bdd.corefunctions.pages.*;
-import io.pragra.shipcarte.bdd.corefunctions.config.FrameworkPropertyConfig;
-import io.pragra.shipcarte.bdd.corefunctions.drivermanager.DriverManager;
-import org.junit.Assert;
+import io.pragra.shipcarte.bdd.corefunctions.config.*;
+import io.pragra.shipcarte.bdd.corefunctions.drivermanager.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class OrangeHRMLoginStepDefinition {
 
@@ -32,7 +33,7 @@ public class OrangeHRMLoginStepDefinition {
         System.out.println("accessed the property file");
     }
 
-    @When("User enter UserName and password")
+    @When("User enter valid UserName and password")
     public void user_enter_valid_crediential() {
 
         orangeHRMLogin.enterUserName("Admin");
@@ -53,7 +54,31 @@ public class OrangeHRMLoginStepDefinition {
     public void should_Be_Landed_In_Orange_HRM_Dashboard() {
 
         boolean linkStatus = driver.findElement(By.linkText("Welcome James")).isDisplayed();
-        Assert.assertTrue(linkStatus);
+        //org.testng.Assert.assertTrue(linkStatus);
+        org.testng.Assert.assertTrue(linkStatus);
         System.out.println("Verified landing page");
     }
+
+    @When("User enter invalid UserName and password")
+    public void userEnterInvalidUserNameAndPassword() {
+        orangeHRMLogin.enterUserName("Admin");
+        orangeHRMLogin.enterPassword("NoPassword");
+        System.out.println("Enter wrong password");
+    }
+
+    @Then("Should prompt error message")
+    public void shouldPromptErrorMessage() {
+
+        //Assert.assertEquals("Invalid credentials",orangeHRMLogin.isInvalidCredentials());
+        Assert.assertEquals("Invalid credentials",orangeHRMLogin.isInvalidCredentials());
+        System.out.println("Verifing invalide password");
+
+    }
+
+    @After
+    public void tearDown(){
+        this.driver.close();
+        System.out.println("This is @After");
+    }
+
 }
